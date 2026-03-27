@@ -47,96 +47,21 @@ html {
 body {
     background: var(--bg-dark);
     color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Barlow', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
 }
 
-/* animated gradient backdrop */
+/* subtle static gradient — no animation */
 body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background: radial-gradient(ellipse at 20% 0%, rgba(239, 68, 68, 0.07) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 100%, rgba(59, 130, 246, 0.07) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246, 0.04) 0%, transparent 60%);
-    background-size: 200% 200%;
-    animation: gradientShift 18s ease-in-out infinite;
+    background: radial-gradient(ellipse at 15% 0%, rgba(239, 68, 68, 0.06) 0%, transparent 45%),
+                radial-gradient(ellipse at 85% 100%, rgba(59, 130, 246, 0.06) 0%, transparent 45%);
     z-index: 0;
     pointer-events: none;
-}
-
-/* dot grid texture */
-body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
-    background-size: 32px 32px;
-    opacity: 0.06;
-    z-index: 1;
-    pointer-events: none;
-}
-
-@keyframes gradientShift {
-    0%, 100% { background-position: 0% 0%; }
-    50% { background-position: 100% 100%; }
-}
-
-/* noise texture overlay */
-.noise-overlay {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.025;
-    pointer-events: none;
-    z-index: 2;
-}
-
-/* ---- Background Orbs ---- */
-.background-effects {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.glow-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.3;
-    animation: float 20s infinite alternate;
-}
-
-.orb-1 {
-    top: -15%; left: -10%;
-    width: 45vw; height: 45vw;
-    background: radial-gradient(circle, var(--red-accent) 0%, transparent 65%);
-}
-
-.orb-2 {
-    bottom: -15%; right: -10%;
-    width: 50vw; height: 50vw;
-    background: radial-gradient(circle, var(--blue-accent) 0%, transparent 65%);
-    animation-delay: -10s;
-}
-
-.orb-3 {
-    top: 40%; left: 50%;
-    transform: translateX(-50%);
-    width: 30vw; height: 30vw;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, transparent 65%);
-    animation-delay: -5s;
-    opacity: 0.15;
-}
-
-@keyframes float {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(4%, 4%) scale(1.08); }
 }
 
 /* ============================================
@@ -150,7 +75,7 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.65rem 2rem;
+    padding: 0.65rem 2rem 0.65rem 1rem;
     background: rgba(8, 10, 16, 0.55);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
@@ -159,17 +84,28 @@ body::after {
 
 .nav-brand {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.nav-brand-text {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 0.12rem;
+    line-height: 1.1;
+}
+
+.nav-icon {
+    flex-shrink: 0;
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(0deg) brightness(1.1);
     line-height: 1.1;
 }
 
 .nav-logo {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 900;
-    font-size: 1rem;
+    font-size: 1.3rem;
     letter-spacing: 0.18em;
     background: linear-gradient(135deg, #fff, #8b949e);
     -webkit-background-clip: text;
@@ -177,8 +113,8 @@ body::after {
 }
 
 .nav-byline {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.62rem;
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.75rem;
     font-weight: 500;
     color: var(--text-dim);
     letter-spacing: 0.06em;
@@ -191,7 +127,7 @@ body::after {
 }
 
 .nav-link {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -240,7 +176,7 @@ body::after {
 }
 
 .hero-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 900;
     font-size: clamp(3rem, 10vw, 7rem);
     letter-spacing: 0.15em;
@@ -258,7 +194,7 @@ body::after {
 }
 
 .hero-subtitle {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 600;
     font-size: clamp(0.7rem, 1.5vw, 0.85rem);
     letter-spacing: 0.12em;
@@ -288,7 +224,7 @@ body::after {
 }
 
 .hero-stat-value {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 800;
     font-size: 1.1rem;
     color: var(--text-primary);
@@ -296,7 +232,7 @@ body::after {
 }
 
 .hero-stat-label {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 0.55rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -315,7 +251,7 @@ body::after {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 0.68rem;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -374,8 +310,8 @@ body::after {
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     padding: 2.5rem;
-    box-shadow: var(--shadow-card);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: none;
+    transition: border-color 0.3s ease;
 }
 
 .glass-panel:hover {
@@ -383,7 +319,7 @@ body::after {
 }
 
 .section-label {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 0.68rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -443,7 +379,7 @@ body::after {
 }
 
 .fighter-panel label {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.72rem;
@@ -488,7 +424,7 @@ input[type="text"] {
     padding: 0.9rem 1rem;
     border-radius: 10px;
     color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Barlow', sans-serif;
     font-size: 0.95rem;
     outline: none;
     transition: border-color 0.25s ease, box-shadow 0.25s ease;
@@ -560,7 +496,7 @@ input[type="text"]:focus {
 }
 
 .vs-badge span {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 900;
     font-size: 1.1rem;
     letter-spacing: 0.08em;
@@ -599,7 +535,7 @@ input[type="text"]:focus {
 .primary-btn {
     background: var(--text-primary);
     color: var(--bg-dark);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: 0.82rem;
     letter-spacing: 0.08em;
@@ -692,14 +628,14 @@ input[type="text"]:focus {
 }
 
 .prob-name {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: 0.82rem;
     letter-spacing: 0.04em;
 }
 
 .prob-pct {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Barlow', sans-serif;
     font-weight: 700;
     font-size: 1.3rem;
     font-variant-numeric: tabular-nums;
@@ -737,7 +673,7 @@ input[type="text"]:focus {
 }
 
 .winner-name-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 900;
     font-size: 0.72rem;
     letter-spacing: 0.12em;
@@ -776,14 +712,14 @@ input[type="text"]:focus {
 }
 
 .profile-name {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 800;
     font-size: 1rem;
     color: var(--text-primary);
 }
 
 .profile-record {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Barlow', sans-serif;
     font-weight: 600;
     font-size: 0.85rem;
     font-variant-numeric: tabular-nums;
@@ -798,7 +734,7 @@ input[type="text"]:focus {
 }
 
 .meta-tag {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 0.6rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -823,7 +759,7 @@ input[type="text"]:focus {
 }
 
 .stat-label {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 0.58rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -832,7 +768,7 @@ input[type="text"]:focus {
 }
 
 .stat-value {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Barlow', sans-serif;
     font-size: 0.92rem;
     font-weight: 600;
     font-variant-numeric: tabular-nums;
@@ -856,7 +792,7 @@ input[type="text"]:focus {
 }
 
 .cmp-val {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Barlow', sans-serif;
     font-weight: 600;
     font-size: 0.88rem;
     font-variant-numeric: tabular-nums;
@@ -873,7 +809,7 @@ input[type="text"]:focus {
 }
 
 .cmp-label {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 0.6rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -925,7 +861,7 @@ input[type="text"]:focus {
 }
 
 .method-row-label {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 0.6rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -969,7 +905,7 @@ input[type="text"]:focus {
 }
 
 .method-count {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Barlow', sans-serif;
     font-size: 0.65rem;
     font-weight: 600;
     color: #fff;
@@ -1003,7 +939,7 @@ input[type="text"]:focus {
 }
 
 .footer-brand {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 800;
     font-size: 0.68rem;
     letter-spacing: 0.15em;
@@ -1016,7 +952,7 @@ input[type="text"]:focus {
 }
 
 .footer-text {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Barlow', sans-serif;
     font-size: 0.7rem;
     color: var(--text-dim);
 }
