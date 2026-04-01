@@ -66,20 +66,20 @@
                 <div class="card glass-panel predictive-engine">
                     <div class="matchup-container">
                         <div class="fighter-panel red-corner">
-                            <label>Fighter 1 <span class="corner-tag red">Red Corner</span></label>
+                            <label for="fighter1">Fighter 1 <span class="corner-tag red">Red Corner</span></label>
                             <div class="input-wrapper">
-                                <input type="text" id="fighter1" placeholder="Search Fighter..." autocomplete="off">
-                                <ul class="autocomplete-list" id="autocomplete1"></ul>
+                                <input type="text" id="fighter1" placeholder="Search Fighter..." autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="autocomplete1">
+                                <ul class="autocomplete-list" id="autocomplete1" role="listbox" aria-label="Fighter 1 suggestions"></ul>
                             </div>
                         </div>
 
                         <div class="vs-badge"><span>VS</span></div>
 
                         <div class="fighter-panel blue-corner">
-                            <label>Fighter 2 <span class="corner-tag blue">Blue Corner</span></label>
+                            <label for="fighter2">Fighter 2 <span class="corner-tag blue">Blue Corner</span></label>
                             <div class="input-wrapper">
-                                <input type="text" id="fighter2" placeholder="Search Fighter..." autocomplete="off">
-                                <ul class="autocomplete-list" id="autocomplete2"></ul>
+                                <input type="text" id="fighter2" placeholder="Search Fighter..." autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="autocomplete2">
+                                <ul class="autocomplete-list" id="autocomplete2" role="listbox" aria-label="Fighter 2 suggestions"></ul>
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
             </div>
         </section>
 
-        <section id="result-section" class="result-section hidden">
+        <section id="result-section" class="result-section hidden" aria-live="polite" aria-label="Prediction results">
 
             <!-- 1. Win Probability -->
             <div class="card glass-panel prob-card" id="results">
