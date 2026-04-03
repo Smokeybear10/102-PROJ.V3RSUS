@@ -74,14 +74,14 @@ def build_profile(stats):
 
 @app.route('/')
 def serve_index():
-    return send_from_directory('static', 'index.html')
+    return send_from_directory(app.static_folder, 'index.html')
 
 
 @app.route('/<path:path>')
 def serve_static(path):
     if os.path.exists(os.path.join(app.static_folder, path)):
-        return send_from_directory('static', path)
-    return send_from_directory('static', 'index.html')
+        return send_from_directory(app.static_folder, path)
+    return send_from_directory(app.static_folder, 'index.html')
 
 
 @app.route('/api/fighters', methods=['GET'])
