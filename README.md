@@ -7,7 +7,7 @@ Ensemble machine learning engine that predicts UFC fight outcomes using career s
 ```bash
 pip install -r requirements.txt
 python backend/app.py
-# open http://localhost:5000
+# open http://localhost:2102
 ```
 
 ## What It Does
